@@ -1,0 +1,16 @@
+
+{% extends 'base.html' %}
+{# this title block overrides the title block in _base.html #} 
+{% block title %}Survey{% endblock %}
+{# this content block overrides the content block in _base.html #} 
+{% block content %}
+<h2>Svara här tack:</h2>
+<form method="post">
+    <input placeholder="Skriv vad du tycker här!" type="text" name="Textruta_att_skriva_i" required>
+    <br><br>
+    <input type="submit" value="Submit">
+</form>
+
+<h3>Andra skrev:</h3>
+<pre>{{ file_content }}</pre>
+{% endblock %}
