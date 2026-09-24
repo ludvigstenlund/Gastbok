@@ -1,5 +1,6 @@
-from flask import Flask, render_template, request, render_template_string
+from flask import Flask, render_template, request
 import os
+import datetime
 
 app = Flask(__name__)
 
@@ -13,20 +14,19 @@ def home():
 def survey():
     content = ''
     if os.path.exists(SAVEDOC):
-        with open(SAVEDOC, 'r', encoding='utf-8') as f: #Flaggan 'r' (read) anger att filen ska läsas
+        with open(SAVEDOC, 'r', encoding='utf-8') as f:
             content = f.read()
     return render_template('survey.html', file_content=content)
 
 
 @app.route('/append', methods=['POST'])
 def append():
-    skrivet_i_rutan = request.form.get('Textruta_att_skriva_i', '')
+    namn = request.form['Textruta_att_skriva_namn_i']
+    skrivet_i_rutan = request.form['Textruta_att_skriva_i']
     if skrivet_i_rutan: 
 
-        print(f"Någon skrev {skrivet_i_rutan}")
-
         with open(SAVEDOC, "a", encoding="utf-8") as f:
-            f.write(skrivet_i_rutan + "\n")
+            f.write(f'\n\n{namn} skrev: \n"{skrivet_i_rutan}" \nDetta gjordes {datetime.datetime.now()}')
 
     with open(SAVEDOC, "r", encoding="utf-8") as f:
         content = f.read()
