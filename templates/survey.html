@@ -13,5 +13,15 @@
 </form>
 
 <h3>Andra skrev:</h3>
-<pre>{{ file_content }}</pre>
+<div class="opinions-container">
+    {% for post in data %}
+        <div class="kommentar">
+            <p><strong>Namn:</strong> {{ post.namn if post.namn else 'Anonym' }}</p>
+            <p><strong>Åsikt:</strong> {{ post.åsikt }}</p>
+            <p><small style="color: gray;">Skickat: {{ post.tidpunkt }}</small></p>
+        </div>
+    {% else %}
+        <p>Bli först med kommentar</p>
+    {% endfor %}
+</div>
 {% endblock %}

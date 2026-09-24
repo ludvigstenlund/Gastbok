@@ -19,3 +19,11 @@ footer {
     padding: 1rem;
     background-color: #556142;
 }
+
+.kommentar {
+    border: 1px solid #606060; 
+    background-color: #d5e0be;
+    padding: 10px; 
+    margin-bottom: 10px; 
+    border-radius: 5px
+}
